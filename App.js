@@ -27,14 +27,21 @@ import store from './src/utils/redux/index';
 
 const Stack = createNativeStackNavigator();
 
+const config = {
+  dependencies: {
+    'linear-gradient': require('react-native-linear-gradient').default,
+  },
+};
+
 const App = () => {
   return (
     <Provider store={store}>
-      <NativeBaseProvider>
+      <NativeBaseProvider config={config}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Main">
+          <Stack.Navigator initialRouteName="Login">
             {screens.map((screen, i) => (
               <Stack.Screen
+                options={{headerShown: false}}
                 key={i}
                 name={screen.name}
                 component={screen.component}
